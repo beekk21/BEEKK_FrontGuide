@@ -16,6 +16,10 @@
     border-radius: 15px;
 }
 
+.wrapper{position: relative; width: 100%; height: 100vh;}
+
+.border_wrap{border: 1px solid #eee; padding: 10px 15px; margin: 10px 0;}
+
 .example_wrap{border: 1px solid rgb(68, 189, 60, 0.7); margin-top: 25px; position: relative; padding: 15px;}
     .example_wrap h5{position: absolute; top: -10px; left: 10px; font-weight: 400; color: #44bd3c; background: #fff;padding: 0 15px;}
 
@@ -27,12 +31,18 @@
     
     .code_wrap .code_toggle_btn{position: absolute;top: 0;right: 0; padding: 2px 10px; font-size: 11px; color: #222;}
 
+.img_wrap{width: 100%; display: flex !important; align-items: flex-start; justify-content: flex-start;}
+    .img_wrap >*{display: flex; flex:0 1 auto;}
+    .img_wrap img{width: 100%;}
+ 
 .bullet_list li{position: relative; padding: 5px !important; padding-left: 20px !important; margin: 0 !important;}
-.bullet_list li::before{content: '•'; display: inline-block; position: absolute; top: 5px; left: 5px;}
+    .bullet_list li::before{content: '•'; display: inline-block; position: absolute; top: 5px; left: 5px;}
 
-.border_wrap{border: 1px solid #eee; padding: 10px 15px; margin: 10px 0;}
 
-.wrapper{position: relative; width: 100%; height: 100vh;}
+
+
+
+
 
 /*************************
  *                       *
@@ -76,7 +86,6 @@
  *   2. #infoAccess            *
  *                             *
  *******************************/
-
 .container{width:100%; min-width:320px; height: calc(100% - 70px); overflow-y: auto; position: absolute; top: 70px; left: 0;}
     .container h2{font-size: 35px; margin: 35px 0; position: relative; padding-left: 10px;}
         .container h2::before{content:''; display: inline-block; width: 5px; height: 80%; position: absolute; top: 10%; left:0; background: linear-gradient( to bottom, #979797, rgb(50, 50, 50) );}
@@ -112,13 +121,11 @@
 
 
 
-
 /**********************
  *                    *
  *     common.html    *
  *                    *
  **********************/
-
 .common h2{font-size: 18px;}
 .common .container{align-items: flex-start; margin: 0 auto;}
     .common .container .inner{position: relative; height: 100%;}
