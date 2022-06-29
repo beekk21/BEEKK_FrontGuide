@@ -549,14 +549,47 @@ function commonModalHandler(target, action) {
                                     </h4>
                                     <ol class="child_list">
                                         <li>
-                                            준비중
+                                            <ul class="bullet_list">
+                                                <li>accordion 은 javascript 관점에서 바라보면 modal 과 비슷한 기재로 작동이 되는 UI 입니다.</li>
+                                                <li>BEEKK 내에서는 많이 사용되는 형태의 UI 는 아니고, 아직 작업중입니다.</li>
+                                                <li>추후 리팩토링 가능성이 있습니다.</li>
+                                            </ul>
                                         </li>
-                                        <!-- <li>
+                                        <li>
+                                            <div class="example_wrap">
+                                                <h5>이미지 예시</h5>
+                                                <div class="img_wrap">
+                                                    <div>
+                                                        <img src="/assets/img/img_accordion02.png" alt="accordion 유형">
+                                                    </div>
+                                                    <div>
+                                                        <img src="/assets/img/img_accordion01.png" alt="accordion 유형">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
 <div class="example_wrap">
 <h5>HTML</h5>
 <div class="code_wrap">
 <button class="code_toggle_btn">열기</button>                                           
-<pre><code class="language-html hljs"></code></pre>
+<pre><code class="language-html hljs">&lt;section class="company_wrap accordion"&gt;
+    &lt;h3&gt;
+        &lt;button class="accordion_title" onclick="accordionHandler(event)"&gt;
+            비크 사업자 정보
+        &lt;/button&gt;
+    &lt;/h3&gt;
+    &lt;ul class="company_contents accordion_contents"&gt;
+        &lt;li&gt;상호 : (주)비크코퍼레이션&lt;/li&gt;
+        &lt;li&gt;대표이사 : 김단비&lt;/li&gt;
+        &lt;li&gt;사업자등록번호 : 120-87-69298&lt;/li&gt;
+        &lt;li&gt;주소 : 서울시 송파구 백제고분로18길 16, 202호(잠실동)&lt;/li&gt;
+        &lt;li&gt;개인정보보호책임자 : 김단비&lt;/li&gt;
+        &lt;li&gt;호스팅서비스 : (주)비크코퍼레이션&lt;/li&gt;
+        &lt;li&gt;이메일 : beekk@beekk.kr &lt;/li&gt;
+        &lt;li&gt;통신판매업신고 : 제2011-서울강남-01864&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/section&gt;</code></pre>
 </div>
 </div>
                                         </li>
@@ -565,7 +598,23 @@ function commonModalHandler(target, action) {
 <h5>CSS</h5>
 <div class="code_wrap">
 <button class="code_toggle_btn">열기</button>                                           
-<pre><code class="language-css hljs"></code></pre>
+<pre><code class="language-css hljs">/************************
+*       .accordion      *
+*************************/
+.accordion > .accordion_contents{display: none !important;}
+.accordion.active > .accordion_contents{display: block !important;}
+    
+/* accordion override */
+.prod_item .size_wrap .accordion > .accordion_contents{display: none;}
+.prod_item .size_wrap .accordion.active > .accordion_contents{display: block;}
+
+.prod_item .size_wrap .accordion > .accordion_title{position: relative; width: 100%;}
+    .prod_item .size_wrap .option_btn::before,
+    .prod_item .size_wrap .accordion > .accordion_title::before{content: ''; display: inline-block; width: 11px; height: 6px; background: url(/assets/img/shop/icon/icon_acorrdion_close.svg) no-repeat center/100%; position: absolute; right: 10px; top: 50%; margin-top: -3px;}
+
+    .prod_item .size_wrap .active > .option_btn::before,
+    .prod_item .size_wrap .active > .accordion_title::before{background: url(/assets/img/shop/icon/icon_acorrdion_open.svg) no-repeat center/100%; position: absolute; right: 10px; top: 50%; margin-top: -3px;}
+</code></pre>
 </div>
 </div>
                                         </li>
@@ -574,10 +623,14 @@ function commonModalHandler(target, action) {
 <h5>JS</h5>
 <div class="code_wrap">
 <button class="code_toggle_btn">열기</button>                                           
-<pre><code class="language-javascript hljs"></code></pre>
+<pre><code class="language-javascript hljs">// 공통 : Accordion
+function accordionHandler(e) {
+    const acrdWrap = e.target.closest(".accordion");
+    acrdWrap.classList.toggle("active");
+}</code></pre>
 </div>
 </div>
-                                        </li> -->
+                                        </li>
                                     </ol>
 
                                 </li>
