@@ -634,7 +634,133 @@ function accordionHandler(e) {
                                     </ol>
 
                                 </li>
-                            </ol>
+
+                                <li>
+                                    <h4>
+                                        <span class="badge">5</span>
+                                        TAB 유형
+                                    </h4>
+                                    <ol class="child_list">
+                                        <li>
+                                            <ul class="bullet_list">
+                                                <li>tab은 여러가지 상황에서 많은 양의 컨텐츠를 효율적으로 보여줄 수 있는 UI 입니다.</li>
+                                                <li>tab menu 여러가지 상황에서 많은 양의 컨텐츠를 효율적으로 보여줄 수 있는 UI 입니다.</li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <div class="example_wrap">
+                                                <h5>이미지 예시</h5>
+                                                <div class="img_wrap">
+                                                    <div>
+                                                        <img src="./assets/img/" alt="tab 유형">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+<div class="example_wrap">
+<h5>HTML</h5>
+<div class="code_wrap">
+<button class="code_toggle_btn">열기</button>                                           
+<pre><code class="language-html hljs">&lt;div class="tab"&gt;
+    &lt;!-- 탭메뉴 --&gt;
+    &lt;nav&gt;
+        &lt;ul class="tab_menu flex_start"&gt;
+            &lt;li class="active"&gt;
+                &lt;a href="#orderSearch" data-target-tab="0" onclick="tabMenuHandler(event)"&gt;
+                    주문내역에서 검색 
+                &lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+                &lt;a href="#storeSearch" data-target-tab="1" onclick="tabMenuHandler(event)"&gt;
+                    스토어에서 검색
+                &lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+                &lt;a href="#interestSearch" data-target-tab="2" onclick="tabMenuHandler(event)"&gt;
+                    관심 브랜드
+                &lt;/a&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/nav&gt;
+
+    &lt;!-- 탭 컨텐츠 --&gt;
+    &lt;div class="tab_contents"&gt;
+        &lt;div class="order active" id="orderSearch" data-target-tab="0"&gt;
+            탭1
+        &lt;/div&gt;
+        &lt;div class="store" id="storeSearch" data-target-tab="1"&gt;
+            탭2
+        &lt;/div&gt;
+        &lt;div class="interest" id="interestSearch" data-target-tab="2"&gt;
+            탭3
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
+</div>
+                                        </li>
+                                        <li>
+<div class="example_wrap">
+<h5>CSS</h5>
+<div class="code_wrap">
+<button class="code_toggle_btn">열기</button>                                           
+<pre><code class="language-css hljs">/******************
+*                 *
+*       .tab      *
+*                 *
+*******************/
+.tab .tab_contents > div{display: none !important;}
+.tab .tab_contents > div.active{display: block !important;}
+</code></pre>
+</div>
+</div>
+                                        </li>
+                                        <li>
+<div class="example_wrap">
+<h5>JS</h5>
+<div class="code_wrap">
+<button class="code_toggle_btn">열기</button>                                           
+<pre><code class="language-javascript hljs">
+// 임시 : tab
+function tabMenuHandler(e) {
+    e.preventDefault();
+
+    const tabMenu = e.target;
+    const targetTab = tabMenu.dataset.targetTab;
+    console.log(targetTab);
+    console.log(tabMenu);
+
+    const tabWrap = tabMenu.closest(".tab");
+    const tabMenus = tabWrap.querySelectorAll(".tab_menu &gt; li");
+    const tabContents = tabWrap.querySelectorAll(".tab_contents &gt; div");
+
+    tabContents.forEach((item, idx) =&gt; {
+    item.classList.remove("active");
+    tabMenus[idx].classList.remove("active");
+
+    if (item.dataset.targetTab == targetTab) {
+        item.classList.add("active");
+        tabMenus[idx].classList.add("active");
+    }
+    });
+}
+
+// 공통 : Tab
+function tabMenuBinder() {
+    const tabMenu = document.body.querySelectorAll(".tab .tab_menu a");
+    tabMenu &amp;&amp;
+    tabMenu.forEach((element) =&gt; {
+        element.addEventListener("click", (event) =&gt; tabMenuHandler(event));
+    });
+}</code></pre>
+</div>
+</div>
+                                        </li>
+                                    </ol>
+
+                                </li>
+                             </ol>
                         </div>
                     </article>
                 </div>
